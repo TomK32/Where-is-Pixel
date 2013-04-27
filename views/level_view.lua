@@ -3,7 +3,7 @@ require('views/log_view')
 
 LevelView = class("LevelView", View)
 LevelView:include({
-  map = nil,
+  level = nil,
   top_left = { x = 0, y = 0 }, -- offset
   scale = game.tile_size,
   canvas = nil,
@@ -11,16 +11,9 @@ LevelView:include({
 
 function LevelView:initialize(level)
   View.initialize(self)
-  self.level = leve
+  self.level = level
   self.draw_cursor = false
   self.canvas = love.graphics.newCanvas(self.display.width, self.display.height)
-  if self.level.background then
-    self.background_scaling =
-      math.ceil(100 * math.min(
-        (self.display.width / self.map.level.background:getWidth()),
-        (self.display.height / self.map.level.background:getHeight())
-      ))/100
-  end
 end
 
 function LevelView:drawContent()
@@ -34,16 +27,8 @@ function LevelView:update()
   love.graphics.setColor(100,153,100,255)
   love.graphics.rectangle('fill', 0,0,self.display.width, self.display.height)
 
-  if self.map.level.background then
-    love.graphics.push()
-    love.graphics.setColor(255, 255, 255, 255)
-    love.graphics.scale(self.background_scaling, self.background_scaling)
-    love.graphics.draw(self.map.level.background, 0, 0)
-    love.graphics.pop()
-  end
-
-  for i, layer in ipairs(self.map.layer_indexes) do
-    entities = self.map.layers[layer]
+  for i, layer in ipairs(self.level.layer_indexes) do
+    entities = self.level.layers[layer]
     table.sort(entities, function(a, b) return a.position.y > b.position.y end)
     for i,entity in ipairs(entities) do
       love.graphics.push()
@@ -75,13 +60,13 @@ function LevelView:moveTopLeft(offset, dontMoveCursor)
 end
 
 function LevelView:fixTopLeft()
-  max_x = math.floor(self.map.height - self:tiles_x())
+  max_x = math.floor(self.level.height - self:tiles_x())
   if self.top_left.x < 0 then
     self.top_left.x = 0
   elseif self.top_left.x > max_x then
     self.top_left.x = max_x + 1
   end
-  max_y = math.floor(self.map.height - self:tiles_y())
+  max_y = math.floor(self.level.height - self:tiles_y())
   if self.top_left.y < 0 then
     self.top_left.y = 0
   elseif self.top_left.y > max_y then

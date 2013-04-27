@@ -2,10 +2,12 @@
 
 IntroView = class("IntroView", View)
 
-IntroView.intro = love.graphics.newImage('images/intro.png')
-IntroView.position = {x = love.graphics.getWidth() / 2,
-  y = love.graphics.getHeight() / 2 - IntroView.intro:getHeight() / 2,
-}
+function IntroView:initialize()
+  View.initialize(self)
+  self.intro = love.graphics.newImage('images/intro.png')
+  self.position = {x = game.graphics.mode.width / 2 - self.intro:getWidth() / 2,
+    y = game.graphics.mode.height / 2 - self.intro:getHeight() / 2}
+end
 
 function IntroView:drawContent()
   game.clearScreen()

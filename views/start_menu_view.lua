@@ -14,8 +14,8 @@ function StartMenuView:drawContent()
   love.graphics.setFont(game.fonts.large)
 
   gui.core.draw()
-  x = math.min(400, game.graphics.mode.width / 3)
-  y = 80
+  x = game.graphics.mode.width / 12 + 120
+  y = 20
 
   love.graphics.setFont(game.fonts.very_large)
   love.graphics.setColor(255,255,255,255)
@@ -37,8 +37,8 @@ end
 
 function StartMenuView:update(dt)
   love.graphics.setFont(game.fonts.large)
-  local x = 100
-  local y = 250
+  local x = game.graphics.mode.width / 12
+  local y = game.graphics.mode.height / 4
 
   gui.group.push({grow = "down", pos = {x, y}})
   -- start the game

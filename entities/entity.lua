@@ -17,7 +17,9 @@ function Entity:initialize(options)
   if self._type == nil then
     self._type = self.class.name
   end
-
+  if self.onInitialize then
+    self:onInitialize()
+  end
   if not self.position then
     self.position = {x = 1, y = 1, z = 1}
   end
@@ -32,60 +34,37 @@ end
 function Entity:draw()
   love.graphics.push()
   local options = 255
-  if self.creation_timer > 0 then
+  if self.creation_timer and self.creation_timer > 0 then
     opacity = math.floor(math.max(0, 255 - 255 * self.creation_timer / self.creation_timer_start))
     self.moving_position = { x = 0, y = (self.creation_timer / self.creation_timer_start) / 2}
   end
   love.graphics.setColor(255,255,255,opacity)
-  game.renderer:translate(self.position.x, self.position.y)
+  love.graphics.translate(self.position.x, self.position.y)
   if self.moving_position then
-    game.renderer:translate(-self.moving_position.x, -self.moving_position.y)
+    love.graphics.translate(-self.moving_position.x, -self.moving_position.y)
   end
   if self.particles then
     love.graphics.draw(self.particles, 0, 0)
+  end
+  if self.canvas then
+    love.graphics.draw(self.canvas, 0, 0)
   end
   self:drawContent()
   love.graphics.pop()
 end
 
 function Entity:drawContent()
-  if self:animation() then
-    self:animation():draw(self:image(), 0, 0)
-  end
 end
 
 function Entity:update(dt)
-  if self.creation_timer > 0 then
+  if self.creation_timer and self.creation_timer > 0 then
     self.creation_timer = self.creation_timer - dt
   end
   if self.particles and self.particles.update then
     self.particles:update(dt)
   end
-  if self:animation() then
-    self:animation():update(dt)
-  end
 end
 
-function Entity:animation()
-  if not self.state then
-    return self.animation_data.animation
-  end
-
-  if not self.animation_data or not self.animation_data[self.state] then
-    return false
-  end
-  return self.animation_data[self.state].animation
-end
-
-function Entity:image()
-  if not self.state then
-    return self.animation_data.image
-  end
-  if not self.animation_data or not self.animation_data[self.state] then
-    return false
-  end
-  return self.animation_data[self.state].image
-end
 function Entity:includesPoint(point)
   if self.position.x <= point.x and self.position.y <= point.y and
       self.position.x + self.position.width >= point.x and
