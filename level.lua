@@ -17,11 +17,13 @@ function Level:initialize(level, seed, width, height)
   -- merge the level's values into this
   assert(Level.levels[level], 'Level ' .. level .. ' is missing')
   level = Level.levels[level]
-  self.name = level.name
-  self.pixel_size = level.pixel_size or 4
+  for k,v in pairs(level) do
+    self[k] = v
+  end
 
   self.layers = {}
   self.layer_indexes = {}
+  self.entities = {}
 
   for name, entity in pairs(level.entities) do
     if entity.initialize then

@@ -17,8 +17,8 @@ function LogView:drawContent()
   love.graphics.rectangle('fill', 0, 0, self.display.width, self.display.height)
   love.graphics.setFont(game.fonts.small)
     love.graphics.setColor(0,0,0,255)
-  for i = 1, math.min(3, #self.log) do
-    love.graphics.print(self.log[#self.log - i + 1], 10, 5 + (i-1) * game.fonts.lineHeight * 0.5)
+  for i = math.max(1, #self.log - 3), 3 do
+    love.graphics.print(self.log[i], 10, 5 + (i-1) * game.fonts.lineHeight * 0.5)
     love.graphics.setColor(50,50,50,255)
   end
   love.graphics.setColor(255,255,255,255)

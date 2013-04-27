@@ -3,6 +3,7 @@ local Background = require 'entities/background'
 
 return {
   name = 'South Pole',
+  description = 'Can you find him here in this white desert?',
   pixel_size = 4,
   entities = {
     background = class("PoleBackground", Background):include({
