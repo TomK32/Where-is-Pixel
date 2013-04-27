@@ -26,7 +26,7 @@ function love.load()
 
   game.current_state = Intro(game.startMenu)
 
-  --love.audio.play(game.sounds.music.track01)
+  game.playMusic(game.sounds.music[1])
   --game:start()
 end
 
@@ -54,6 +54,7 @@ function love.mousepressed(x,y,button)
 end
 function love.update(dt)
   if not game.current_state then return end
+  game:update(dt)
   tween.update(dt)
   game.current_state:update(dt)
 end

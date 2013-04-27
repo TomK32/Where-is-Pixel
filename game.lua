@@ -10,11 +10,19 @@ game = {
   version = require('version'),
   name = 'Where is Pixel?',
   url = 'http://ananasblau.com/where-is-pixel',
+  volume = 1.0,
   levels = {
 
   },
   current_level = 1
 }
+
+function game:update(dt)
+  if game.music_volume and game.music_volume ~= game.last_music_volume then
+    game.music:setVolume(game.music_volume)
+    game.last_music_volume = game.music_volume
+  end
+end
 
 function game:createFonts(offset)
   local font_file = 'fonts/Comfortaa-Regular.ttf'
@@ -47,6 +55,25 @@ function game:start()
   game.stopped = false
   --love.mouse.setVisible(false)
   game.current_state = LevelState(game.current_level)
+end
+
+-- pass nil to turn the music off
+function game.changeMusic(new_music)
+  print(game.playMusic, new_music)
+  if not game.music then
+    game:playMusic(new_music)
+  else
+    tween(0.5, game, { music_volume = 0.0 }, 'linear', game.playMusic, new_music)
+  end
+end
+
+function game.playMusic(music)
+  if not music then return end
+  game.music = music
+  game.music_volume = 0.0
+  game.music:setVolume(0)
+  love.audio.play(game.music)
+  tween(2, game, {music_volume = game.volume})
 end
 
 function game:hasNextLevel()

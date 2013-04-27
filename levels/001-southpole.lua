@@ -3,6 +3,7 @@ return {
   name = 'South Pole',
   description = 'Can you find him here in this white desert?',
   pixel_size = 4,
+  music = love.audio.newSource('levels/001-southpole.it', 'static'),
   entities = {
     background = Background:subclass():include({
       drawPixel = function(self, x, y)

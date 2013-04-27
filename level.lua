@@ -25,6 +25,11 @@ function Level:initialize(level, seed, width, height)
   self.layer_indexes = {}
   self.entities = nil
 
+  -- play it here instead of the LevelState in case the entities need some time to load
+  if self.music then
+    game.changeMusic(self.music)
+  end
+
   for name, entity in pairs(level.entities) do
     if entity.initialize then
       entity = entity({level = self})
