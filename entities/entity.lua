@@ -65,10 +65,18 @@ function Entity:update(dt)
   end
 end
 
-function Entity:includesPoint(point)
-  if self.position.x <= point.x and self.position.y <= point.y and
-      self.position.x + self.position.width >= point.x and
-      self.position.y + self.position.height >= point.y then
+function Entity:includesPoint(x, y)
+  if not self.collision_rect then
+    self.collision_rect = {0,0,0,0}
+  end
+  local r = {
+    self.position.x + self.collision_rect[1],
+    self.position.y + self.collision_rect[2],
+    self.position.x + self.collision_rect[3] + (self.width or 0),
+    self.position.y + self.collision_rect[4] + (self.height or 0)
+  }
+  if r[1] <= x and r[2] <= y and
+     r[3] >= x and r[4] >= y then
     return true
   end
   return false

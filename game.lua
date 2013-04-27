@@ -45,7 +45,7 @@ end
 
 function game:start()
   game.stopped = false
-  love.mouse.setVisible(false)
+  --love.mouse.setVisible(false)
   game.current_state = LevelState(game.current_level)
 end
 

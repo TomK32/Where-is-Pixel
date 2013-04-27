@@ -2,6 +2,7 @@
 require 'entities.entity'
 
 Pixel = class('Pixel', Entity)
+Pixel.collision_rect = {-5, -5, 15, 25}
 
 function Pixel:moveTo(x, y, time, method)
   if time == nil or time == 0 then
@@ -12,3 +13,6 @@ function Pixel:moveTo(x, y, time, method)
   end
 end
 
+function Pixel:mousepressed(x, y, button)
+  print("HURRAY")
+end

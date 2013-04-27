@@ -23,7 +23,7 @@ function Level:initialize(level, seed, width, height)
 
   self.layers = {}
   self.layer_indexes = {}
-  self.entities = {}
+  self.entities = nil
 
   for name, entity in pairs(level.entities) do
     if entity.initialize then
@@ -65,4 +65,12 @@ function Level:addEntity(entity)
 end
 
 
-
+function Level:eachEntity(callback)
+  for i, layer in ipairs(self.layer_indexes) do
+    entities = self.layers[layer]
+    table.sort(entities, function(a, b) return a.position.y > b.position.y end)
+    for i,entity in ipairs(entities) do
+      callback(entity)
+    end
+  end
+end

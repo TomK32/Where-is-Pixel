@@ -34,3 +34,11 @@ function LevelState:update(dt)
   self.level:update(dt)
   self.view:update()
 end
+
+function LevelState:mousepressed(x, y, button)
+  self.level:eachEntity( function(entity)
+    if entity.mousepressed and entity.includesPoint and entity:includesPoint(x, y) then
+      entity:mousepressed(x, y, button)
+    end
+  end)
+end
