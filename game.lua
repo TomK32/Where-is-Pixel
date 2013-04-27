@@ -77,3 +77,11 @@ end
 function game:showCredits()
   game.current_state = State(self, 'Credits', CreditsView())
 end
+
+function game.clearScreen(color, x, y, width, height)
+  if not color then
+    color = {50,103,200,255}
+  end
+  love.graphics.setColor(unpack(color))
+  love.graphics.rectangle('fill', x or 0, y or 0, width or game.graphics.mode.width, height or game.graphics.mode.height)
+end

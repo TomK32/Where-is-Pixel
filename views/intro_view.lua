@@ -8,6 +8,7 @@ IntroView.position = {x = love.graphics.getWidth() / 2,
 }
 
 function IntroView:drawContent()
+  game.clearScreen()
   love.graphics.setFont(game.fonts.regular)
   local c = 255 * math.min(1, (self.dt_timer/3))
   love.graphics.setColor(c,c,c, c)

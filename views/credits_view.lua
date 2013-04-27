@@ -4,6 +4,7 @@ CreditsView = class("CreditsView", View)
 CreditsView.gui = require 'lib/quickie'
 
 function CreditsView:drawContent()
+  game.clearScreen()
   love.graphics.setFont(game.fonts.regular)
   love.graphics.setColor(255,255,255,255)
   self.gui.core.draw()
