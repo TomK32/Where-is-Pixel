@@ -23,7 +23,7 @@ end
 
 local function _setClassMetatable(klass)
   setmetatable(klass, {
-    __tostring = function() return "class " .. klass.name end,
+    __tostring = function() return "class " .. (klass.name or 'anonymous') end,
     __index    = klass.static,
     __newindex = klass.__instanceDict,
     __call     = function(self, ...) return self:new(...) end
@@ -93,7 +93,7 @@ end
 
 function Object.static:subclass(name)
   assert(_classes[self], "Make sure that you are using 'Class:subclass' instead of 'Class.subclass'")
-  assert(type(name) == "string", "You must provide a name(string) for your class")
+  --assert(type(name) == "string", "You must provide a name(string) for your class")
 
   local subclass = _createClass(name, self)
   _setClassMetamethods(subclass)
