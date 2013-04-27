@@ -1,3 +1,10 @@
+--
+-- regarding positions:
+--  0 background
+--  5 other entities
+-- 10 Pixel
+-- 20 clouds
+-- 99 ISS
 
 return {
   name = 'South Pole',
@@ -14,6 +21,36 @@ return {
         love.graphics.rectangle('fill', x * p, y * p, p, p)
       end
     }),
+    clouds = { 5, Background:subclass():include({
+      blendMode = 'additive',
+      pixel_size = 8,
+      scale = {16, 2},
+      onInitialize = function(self)
+        local p = self.pixel_size
+        -- create smaller size
+        self.width = self.level.width * 2
+        self.height = self.level.height / 2
+        SimplexNoise.seedP(self.id)
+        print(math.abs(SimplexNoise.Noise2D(self.id, 1)))
+        self.position = {
+            x = - self.width * math.abs(SimplexNoise.Noise2D(self.id, 1)*2),
+            y = math.abs(math.floor(SimplexNoise.Noise2D(1, self.id) * self.level.height)),
+            z = 20
+        }
+        print(self.position.x, self.position.y, 'wh', self.width, self.height)
+        -- move
+        tween(20, self.position, {x = self.level.width, y = self.position.y - (3 + self.id)})
+      end,
+      drawPixel = function(self, x, y)
+        local p = self.pixel_size
+        local c = math.ceil(SimplexNoise.Noise2D(x / 40, y * 10) * 20)
+        if c < 0 then return end
+        -- slightly blue-whiteish
+        love.graphics.setColor( 235 + c, 235 + c, 235 + c, 50)
+        love.graphics.rectangle('fill', x * p, y * p, p, p)
+      end
+
+    })},
     pole = Entity:subclass():include({
       onInitialize = function(self)
         self.position = { x = self.level.width / 2, y = self.level.height / 2, z = 5 }

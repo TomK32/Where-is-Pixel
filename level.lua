@@ -31,10 +31,16 @@ function Level:initialize(level, seed, width, height)
   end
 
   for name, entity in pairs(level.entities) do
-    if entity.initialize then
-      entity = entity({level = self})
+    if type(entity) == 'table' and type(entity[1]) == 'number' then
+      for i=1, entity[1] do
+        self:addEntity(entity[2]({level = self, id = i}))
+      end
+    else
+      if entity.initialize then
+        entity = entity({level = self})
+      end
+      self:addEntity(entity)
     end
-    self:addEntity(entity)
   end
 
   self.dt = 0
