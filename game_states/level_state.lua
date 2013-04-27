@@ -1,8 +1,10 @@
 
+require 'entities/pixel'
+require 'entities/background'
+
 require 'level'
 require 'views/level_view'
 require 'views/log_view'
-
 LevelState = class("LevelState", State)
 
 function LevelState:initialize(level)

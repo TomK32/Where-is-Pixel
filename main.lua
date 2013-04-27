@@ -11,6 +11,7 @@ require 'game_states/state'
 require 'game_states/intro'
 require 'game_states/start_menu'
 require 'game_states/level_state'
+tween = require 'lib/tween'
 
 function love.load()
   local modes = love.graphics.getModes()
@@ -53,6 +54,7 @@ function love.mousepressed(x,y,button)
 end
 function love.update(dt)
   if not game.current_state then return end
+  tween.update(dt)
   game.current_state:update(dt)
 end
 

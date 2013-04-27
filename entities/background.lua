@@ -1,5 +1,5 @@
 require 'entities.entity'
-local Background = class('Background', Entity)
+Background = class('Background', Entity)
 
 function Background:initialize(options)
   Entity.initialize(self, options)
@@ -21,4 +21,3 @@ function Background:drawPixels()
   love.graphics.setCanvas()
 end
 
-return Background

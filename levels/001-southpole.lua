@@ -1,6 +1,4 @@
 
-local Background = require 'entities/background'
-
 return {
   name = 'South Pole',
   description = 'Can you find him here in this white desert?',
@@ -25,6 +23,21 @@ return {
         love.graphics.rectangle('fill', 0, 0, p/2, p * 4)
         love.graphics.setColor( 255, 0, 0, 255)
         love.graphics.rectangle('fill', 0, p/2, p * 2, p)
+      end
+    }),
+    pixel = Pixel:subclass():include({
+      onInitialize = function(self)
+        self.position = { x = 0, y = 0, z = 10 }
+        self:moveTo(self.level.width / 2, self.level.height / 2, 20)
+      end,
+      drawContent = function(self)
+        local p = self.level.pixel_size
+        love.graphics.setColor( 0, 0, 0, 255)
+        love.graphics.rectangle('fill', 0, 0, p, p)
+        love.graphics.setColor( 200, 200, 200, 255)
+        love.graphics.rectangle('fill', 0, p, p, p)
+        love.graphics.setColor( 0, 200, 0, 255)
+        love.graphics.rectangle('fill', 0, 2*p, p, p)
       end
     })
   },
