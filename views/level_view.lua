@@ -27,10 +27,10 @@ function LevelView:update()
   love.graphics.setColor(100,153,100,255)
   love.graphics.rectangle('fill', 0,0,self.display.width, self.display.height)
 
-  for i, layer in ipairs(self.level.layer_indexes) do
+  for z, layer in ipairs(self.level.layer_indexes) do
     entities = self.level.layers[layer]
     table.sort(entities, function(a, b) return a.position.y > b.position.y end)
-    for i,entity in ipairs(entities) do
+    for i, entity in ipairs(entities) do
       love.graphics.push()
       entity:draw()
       love.graphics.pop()

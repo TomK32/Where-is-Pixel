@@ -31,6 +31,9 @@ end
 
 function Entity:draw()
   love.graphics.push()
+  if self.blendMode then
+    love.graphics.setBlendMode(self.blendMode)
+  end
   love.graphics.setColor(255,255,255,opacity)
   love.graphics.translate(self.position.x, self.position.y)
   if self.moving_position then
@@ -43,6 +46,9 @@ function Entity:draw()
     love.graphics.draw(self.canvas, 0, 0)
   end
   self:drawContent()
+  if self.blendMode then
+    love.graphics.setBlendMode('alpha')
+  end
   love.graphics.pop()
 end
 

@@ -59,7 +59,6 @@ end
 
 -- pass nil to turn the music off
 function game.changeMusic(new_music)
-  print(game.playMusic, new_music)
   if not game.music then
     game:playMusic(new_music)
   else
@@ -69,6 +68,9 @@ end
 
 function game.playMusic(music)
   if not music then return end
+  if game.music then -- just in case
+    love.audio.stop(game.music)
+  end
   game.music = music
   game.music_volume = 0.0
   game.music:setVolume(0)

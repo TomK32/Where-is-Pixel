@@ -15,14 +15,14 @@ return {
     background = Background:subclass():include({
       drawPixel = function(self, x, y)
         local p = self.level.pixel_size
-        local c = math.ceil(SimplexNoise.Noise2D(math.floor(x / p), math.floor( y / p)) * 20)
+        local c = math.ceil(SimplexNoise.Noise2D(math.floor(x / p), math.floor( y / p)) * 10)
         -- slightly blue-whiteish
-        love.graphics.setColor( 205 + c, 205 + c, 235 + c, 255)
+        love.graphics.setColor( 240 + c, 240 + c, 245 + c, 255)
         love.graphics.rectangle('fill', x * p, y * p, p, p)
       end
     }),
-    clouds = { 5, Background:subclass():include({
-      blendMode = 'additive',
+    clouds = { 3, Background:subclass():include({
+      blendMode = 'premultiplied',
       pixel_size = 8,
       scale = {16, 2},
       onInitialize = function(self)
@@ -31,13 +31,11 @@ return {
         self.width = self.level.width * 2
         self.height = self.level.height / 2
         SimplexNoise.seedP(self.id)
-        print(math.abs(SimplexNoise.Noise2D(self.id, 1)))
         self.position = {
             x = - self.width * math.abs(SimplexNoise.Noise2D(self.id, 1)*2),
-            y = math.abs(math.floor(SimplexNoise.Noise2D(1, self.id) * self.level.height)),
+            y = math.abs(math.floor(SimplexNoise.Noise2D(1, self.id) * self.level.height/self.id)),
             z = 20
         }
-        print(self.position.x, self.position.y, 'wh', self.width, self.height)
         -- move
         tween(20, self.position, {x = self.level.width, y = self.position.y - (3 + self.id)})
       end,
@@ -65,10 +63,13 @@ return {
     }),
     pixel = Pixel:subclass():include({
       onInitialize = function(self)
+        local p = 4
+        self.collision_rect = { - p, - p, 3 * p, 4 * p}
         self.position = { x = 0, y = 0, z = 10 }
         self:moveTo(self.level.width / 2, self.level.height / 2, 20)
       end,
       drawContent = function(self)
+
         local p = self.level.pixel_size
         love.graphics.setColor( 0, 0, 0, 255)
         love.graphics.rectangle('fill', 0, 0, p, p)
