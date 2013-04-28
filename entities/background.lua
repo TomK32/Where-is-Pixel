@@ -6,6 +6,10 @@ function Background:initialize(options)
   self.width = self.width or self.level.width
   self.height = self.height or self.level.height
 
+  if self.image and type(self.image) == 'Image' then
+    self.scale = {self.image:getWidth() / self.width, self.image:getWidth() / self.height}
+  end
+
   -- for procedually generated background images
   if self.drawPixel then
     self.canvas = love.graphics.newCanvas(self.width, self.height)

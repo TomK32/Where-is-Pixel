@@ -45,6 +45,9 @@ function Entity:draw()
   if self.canvas then
     love.graphics.draw(self.canvas, 0, 0)
   end
+  if self.image then
+    love.graphics.draw(self.image, 0, 0)
+  end
   if self.animation then
     self.animation:draw()
   end
