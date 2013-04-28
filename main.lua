@@ -53,6 +53,7 @@ function love.mousepressed(x,y,button)
   end
 end
 function love.update(dt)
+  dt = 0.015
   if not game.current_state then return end
   game:update(dt)
   tween.update(dt)
