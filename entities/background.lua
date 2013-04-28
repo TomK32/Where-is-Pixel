@@ -11,7 +11,6 @@ function Background:initialize(options)
     self.canvas = love.graphics.newCanvas(self.width, self.height)
     self:drawPixels()
   end
-  self.creation_timer = 0
 end
 
 function Background:drawPixels()
