@@ -3,7 +3,7 @@
 # https://github.com/TomK32/kollum/blob/master/build.sh
 # based on https://github.com/josefnpat/LD24/blob/master/build.sh
 # Configure this, and also ensure you have the build/osx.patch ready.
-NAME="Where is Pixel?"
+NAME="Where is Pixel"
 
 # Version is {last tag}-{commits since last tag}.
 # e.g: 0.1.2-3
@@ -68,7 +68,7 @@ unzip -q -d "$BUILD" "$BUILD/love-$VERSION-macosx-ub.zip"
 mv "$BUILD/love.app" "$BUILD/${FILENAME}.app"
 cp "$BUILD/$FILENAME.love" "$BUILD/$FILENAME.app/Contents/Resources/"
 patch "$BUILD/${FILENAME}.app/Contents/Info.plist" -i "$BUILD/osx.patch"
-cp "build/Pixel.icns" "$BUILD/$FILENAME.app/Contents/Resources"
+cp "build/Where is Pixel.icns" "$BUILD/$FILENAME.app/Contents/Resources"
 R_PWD=`pwd`
 cd "$BUILD"
 if [ -f "${FILENAME}_macosx.zip" ]; then rm "${FILENAME}_macosx.zip"; fi
