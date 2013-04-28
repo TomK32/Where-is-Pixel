@@ -91,3 +91,12 @@ function Entity:createParticles(image)
   particles:setRadialAcceleration    (10)
   return particles
 end
+
+-- for debugging
+function Entity:drawCollisionRect()
+  local x1,y1,x2,y2 = unpack(self.collision_rect)
+  if not x1 or not y2 then return end
+  love.graphics.setColor(0,0,0,255)
+  love.graphics.rectangle('line', x1, y1, x2 - x1, y2 - y1)
+end
+
