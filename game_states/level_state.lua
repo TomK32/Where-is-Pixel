@@ -8,8 +8,8 @@ require 'views/log_view'
 LevelState = class("LevelState", State)
 
 function LevelState:initialize(level)
-  local height = game.graphics.mode.height - 16
-  local width = game.graphics.mode.width - 16
+  local height = game.graphics.mode.height
+  local width = game.graphics.mode.width
   self.level = Level(level, math.floor(math.random() * 100), width, height)
   self.log = {'Where is Pixel?', self.level.name, self.level.description}
   self.log_view = LogView(self.log)
