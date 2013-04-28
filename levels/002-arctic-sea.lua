@@ -5,7 +5,7 @@ return {
   name = 'Arctic Sea',
   description = 'Pixel is swimming north to Australia.',
   pixel_size = 4,
-  music = love.audio.newSource('levels/002-wizards-of-the-hands.it', 'static'),
+  music = love.audio.newSource('sounds/002-wizards-of-the-hands.it', 'static'),
   entities = {
     background = Background:subclass():include({
       drawPixel = function(self, x, y)

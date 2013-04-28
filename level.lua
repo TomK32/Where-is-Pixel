@@ -6,7 +6,8 @@ LuaBit = require("lib/LuaBit")
 
 Level.levels = {
   require('levels/001-southpole'),
-  require('levels/002-arctic-sea')
+  require('levels/002-arctic-sea'),
+  require('levels/003-sydney')
 }
 
 function Level:initialize(level, seed, width, height)
