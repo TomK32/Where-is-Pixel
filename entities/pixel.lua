@@ -14,5 +14,5 @@ function Pixel:moveTo(x, y, time, method)
 end
 
 function Pixel:mousepressed(x, y, button)
-  print("HURRAY")
+  game.foundPixel()
 end

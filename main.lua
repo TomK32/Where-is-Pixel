@@ -11,6 +11,7 @@ require 'game_states/state'
 require 'game_states/intro'
 require 'game_states/start_menu'
 require 'game_states/level_state'
+require 'game_states/finish'
 tween = require 'lib/tween'
 
 function love.load()

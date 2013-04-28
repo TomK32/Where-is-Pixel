@@ -11,6 +11,10 @@ game = {
   name = 'Where is Pixel?',
   url = 'http://ananasblau.com/where-is-pixel',
   volume = 1.0,
+  found_pixel_messages = {
+    'You found Pixel!',
+    'Oh there he is :)'
+  },
   levels = {
 
   },
@@ -55,6 +59,7 @@ function game:start()
   game.stopped = false
   --love.mouse.setVisible(false)
   game.current_state = LevelState(game.current_level)
+  game.level = game.current_state.level
 end
 
 -- pass nil to turn the music off
@@ -89,10 +94,14 @@ function game:nextLevel()
   game:start()
 end
 
-function game:finished(player, message, progress)
+function game.finished(message, progress)
   love.mouse.setVisible(true)
   game.stopped = true
-  game.current_state = FinishScreen(player, message, progress)
+  game.current_state = Finish(message, progress, game.current_state.view)
+end
+
+function game.foundPixel()
+  game.finished(game.found_pixel_messages[(game.current_level % #game.found_pixel_messages) + 1], true)
 end
 
 function game.loadImage(image)
