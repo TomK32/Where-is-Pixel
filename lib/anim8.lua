@@ -275,7 +275,6 @@ function Animation:draw(image, x, y, r, sx, sy, ox, oy, ...)
     end
   end
 
-  print(self, image, frame, x, y, r, sx, sy, ox, oy, ...)
   love.graphics.drawq(image, frame, x, y, r, sx, sy, ox, oy, ...)
 end
 

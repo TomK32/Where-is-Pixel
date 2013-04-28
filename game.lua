@@ -51,6 +51,7 @@ end
 
 function game:startMenu()
   love.mouse.setVisible(true)
+  game.current_level = 1
   game.current_state = StartMenu()
 end
 
