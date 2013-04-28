@@ -55,7 +55,7 @@ do
 
   echo "$BUILD/${FILENAME}_$arch.zip"
   if [ -f "$BUILD/${FILENAME}_$arch.zip" ]; then rm "$BUILD/${FILENAME}_$arch.zip"; fi
-  zip -q -r "$BUILD/${FILENAME}_$arch.zip" "$BUILD/${FILENAME}_$arch"
+  zip -q -r "$BUILD/${FILENAME}_$arch.zip" "${FILENAME}_$arch"
   rm -R "$BUILD/${FILENAME}_$arch"
   cd "$R_PWD"
 done
@@ -67,8 +67,9 @@ if [ -d  "$BUILD/love.app" ]; then rm -R "$BUILD/love.app"; fi
 unzip -q -d "$BUILD" "$BUILD/love-$VERSION-macosx-ub.zip"
 mv "$BUILD/love.app" "$BUILD/${FILENAME}.app"
 cp "$BUILD/$FILENAME.love" "$BUILD/$FILENAME.app/Contents/Resources/"
-patch "$BUILD/${FILENAME}.app/Contents/Info.plist" -i "$BUILD/osx.patch"
 cp "build/Where is Pixel.icns" "$BUILD/$FILENAME.app/Contents/Resources"
+patch "$BUILD/${FILENAME}.app/Contents/Info.plist" -i "$BUILD/osx.patch"
+sed -i.bak s/VERSION/$GAME_VERSION/ "$BUILD/${FILENAME}.app/Contents/Info.plist" 
 R_PWD=`pwd`
 cd "$BUILD"
 if [ -f "${FILENAME}_macosx.zip" ]; then rm "${FILENAME}_macosx.zip"; fi

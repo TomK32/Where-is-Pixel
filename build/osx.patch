@@ -45,12 +45,12 @@
  	<string>6.0</string>
  	<key>CFBundleName</key>
 -	<string>LÖVE</string>
-+	<string>Where is Pixel?</string>
++	<string>Where is Pixel</string>
  	<key>CFBundlePackageType</key>
  	<string>APPL</string>
  	<key>CFBundleShortVersionString</key>
 -	<string>0.8.0</string>
-+	<string>0.0.1</string>
++	<string>VERSION</string>
  	<key>CFBundleSignature</key>
  	<string>LoVe</string>
  	<key>DTCompiler</key>
