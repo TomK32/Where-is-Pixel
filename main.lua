@@ -4,6 +4,7 @@
 -- (C) 2013 Thomas R. Koll
 
 require 'lib/middleclass'
+require 'animations'
 require 'game'
 require 'views/view'
 require 'views/credits_view'

@@ -5,7 +5,8 @@ SimplexNoise = require("lib/SimplexNoise")
 LuaBit = require("lib/LuaBit")
 
 Level.levels = {
-  require('levels/001-southpole')
+  require('levels/001-southpole'),
+  require('levels/002-arctic-sea')
 }
 
 function Level:initialize(level, seed, width, height)

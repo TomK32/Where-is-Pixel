@@ -1,17 +1,9 @@
 
 require 'entities.entity'
 
-Pixel = class('Pixel', Entity)
+Pixel = class('Pixel', Actor)
 Pixel.collision_rect = {-5, -5, 15, 25}
-
-function Pixel:moveTo(x, y, time, method)
-  if time == nil or time == 0 then
-    self.position.x = x
-    self.position.y = y
-  else
-    tween(time, self.position, {x = x, y = y}, method)
-  end
-end
+Pixel.pixel_size = 2
 
 function Pixel:mousepressed(x, y, button)
   game.foundPixel()

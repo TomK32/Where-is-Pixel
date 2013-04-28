@@ -1,4 +1,5 @@
 
+require 'entities/actor'
 require 'entities/pixel'
 require 'entities/background'
 

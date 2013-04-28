@@ -6,6 +6,8 @@
 -- 20 clouds
 -- 99 ISS
 
+-- Level 1
+
 return {
   name = 'South Pole',
   description = 'Can you find him here in this white desert?',
@@ -65,12 +67,12 @@ return {
       onInitialize = function(self)
         local p = 4
         self.collision_rect = { - p, - p, 3 * p, 4 * p}
-        self.position = { x = 0, y = 0, z = 10 }
+        self.position = { x = self.level.width * math.random(), y = 0, z = 10 }
         self:moveTo(self.level.width / 2, self.level.height / 2, 20)
       end,
       drawContent = function(self)
 
-        local p = self.level.pixel_size
+        local p = self.pixel_size
         love.graphics.setColor( 0, 0, 0, 255)
         love.graphics.rectangle('fill', 0, 0, p, p)
         love.graphics.setColor( 200, 200, 200, 255)

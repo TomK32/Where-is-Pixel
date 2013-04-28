@@ -16,9 +16,6 @@ game = {
     'You found Pixel!',
     'Oh there is Pixel :)'
   },
-  levels = {
-
-  },
   current_level = 1
 }
 
@@ -85,7 +82,7 @@ function game.playMusic(music)
 end
 
 function game:hasNextLevel()
-  return self.current_level < #self.levels
+  return self.current_level < #Level.levels
 end
 
 function game:nextLevel()

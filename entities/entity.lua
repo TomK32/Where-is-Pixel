@@ -45,6 +45,9 @@ function Entity:draw()
   if self.canvas then
     love.graphics.draw(self.canvas, 0, 0)
   end
+  if self.animation then
+    self.animation:draw()
+  end
   self:drawContent()
   if self.blendMode then
     love.graphics.setBlendMode('alpha')
@@ -58,6 +61,9 @@ end
 function Entity:update(dt)
   if self.particles and self.particles.update then
     self.particles:update(dt)
+  end
+  if self.animation then
+    self.animation:update(dt)
   end
 end
 

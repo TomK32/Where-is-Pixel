@@ -13,7 +13,7 @@ end
 function LogView:drawContent()
   love.graphics.setColor(0,0,0,200)
   love.graphics.rectangle('line', 0, 0, self.display.width, self.display.height)
-  love.graphics.setColor(255,255,255,50)
+  love.graphics.setColor(255,255,255,100)
   love.graphics.rectangle('fill', 0, 0, self.display.width, self.display.height)
   love.graphics.setFont(game.fonts.small)
     love.graphics.setColor(0,0,0,255)
