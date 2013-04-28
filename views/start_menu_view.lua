@@ -25,14 +25,16 @@ function StartMenuView:drawContent()
 
   love.graphics.push()
   love.graphics.setFont(game.fonts.large)
-  love.graphics.translate(x, math.min(500, game.graphics.mode.height * 0.7))
+  love.graphics.translate(x, math.min(500, game.graphics.mode.height * 0.5))
+  love.graphics.print("Yes, Pixel looks a bit funny.", 0, 0)
+  love.graphics.translate(0, 3 * game.fonts.lineHeight)
   love.graphics.print("A search game for today's pixel-head.", 0, 0)
   love.graphics.translate(0, game.fonts.lineHeight)
   love.graphics.print("Explore the world from you home computer.", 0, 0)
   love.graphics.translate(0, game.fonts.lineHeight)
   love.graphics.print("Your friend Pixel is already there, can you find him?", 0, 0)
 
-  love.graphics.translate(0, 3* game.fonts.lineHeight)
+  love.graphics.translate(0, 2 * game.fonts.lineHeight)
   love.graphics.setFont(game.fonts.small)
   love.graphics.print("PS: Want to make a level? Send a mail to info@ananasblau.com", 0, 0)
 
