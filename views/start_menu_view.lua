@@ -4,6 +4,7 @@ gui = require 'lib/quickie'
 
 StartMenuView = class("MenuView", View)
 gui.core.style.color.normal.bg = {80,180,80}
+gui.core.style.color.normal.fg = {0,0,0}
 
 StartMenuView.title = love.graphics.newImage('images/title.png')
 
@@ -67,5 +68,9 @@ function StartMenuView:update(dt)
   if gui.Button({text = "Credits"}) then
     game:showCredits()
   end
+  if gui.Button({text = "Donate"}) then
+    openURL(game.paypal_url)
+  end
+
 
 end

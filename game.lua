@@ -10,10 +10,11 @@ game = {
   version = require('version'),
   name = 'Where is Pixel?',
   url = 'http://ananasblau.com/where-is-pixel',
+  paypal_url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ2S9DN8QHWZJ',
   volume = 1.0,
   found_pixel_messages = {
     'You found Pixel!',
-    'Oh there he is :)'
+    'Oh there is Pixel :)'
   },
   levels = {
 
