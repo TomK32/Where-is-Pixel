@@ -12,6 +12,7 @@ game = {
   url = 'http://ananasblau.com/whereispixel',
   paypal_url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ2S9DN8QHWZJ',
   volume = 1.0,
+  pixel_size = 2, -- 1 is hard, 2 medium and 4 easy
   found_pixel_messages = {
     'You found Pixel!',
     'Oh there is Pixel :)'
@@ -99,6 +100,7 @@ function game.finished(message, progress)
 end
 
 function game.foundPixel()
+  love.audio.play(game.sounds.fx.found_pixel)
   game.finished(game.found_pixel_messages[(game.current_level % #game.found_pixel_messages) + 1], true)
 end
 

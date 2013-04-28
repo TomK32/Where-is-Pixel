@@ -43,7 +43,16 @@ function StartMenuView:update(dt)
 
   gui.group.push({grow = "down", pos = {x, y}})
   -- start the game
-  if gui.Button({text = '[N]ew game'}) then
+  if gui.Button({text = 'Hard'}) then
+    game.pixel_size = 1
+    game:start()
+  end
+  if gui.Button({text = 'Medium'}) then
+    game.pixel_size = 2
+    game:start()
+  end
+  if gui.Button({text = 'Easy'}) then
+    game.pixel_size = 4
     game:start()
   end
   gui.group.push({grow = "down", pos = {0, 20}})
