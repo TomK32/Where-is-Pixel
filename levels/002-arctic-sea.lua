@@ -6,6 +6,7 @@ return {
   description = 'Pixel is swimming north to Australia.',
   pixel_size = 4,
   music = love.audio.newSource('sounds/002-wizards-of-the-hands.it', 'static'),
+  log_position = {1, 0},
   entities = {
     background = Background:subclass():include({
       drawPixel = function(self, x, y)

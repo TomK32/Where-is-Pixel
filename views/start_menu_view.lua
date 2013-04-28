@@ -3,6 +3,7 @@ require 'views/view'
 gui = require 'lib/quickie'
 
 StartMenuView = class("MenuView", View)
+gui.core.style.color.hot.fg = {89,1,14}
 gui.core.style.color.normal.bg = {80,180,80}
 gui.core.style.color.normal.fg = {0,0,0}
 
@@ -22,6 +23,7 @@ function StartMenuView:drawContent()
   love.graphics.setColor(255,255,255,255)
   love.graphics.draw(self.title, x, y)
 
+  love.graphics.push()
   love.graphics.setFont(game.fonts.large)
   love.graphics.translate(x, math.min(500, game.graphics.mode.height * 0.7))
   love.graphics.print("A search game for today's pixel-head.", 0, 0)
@@ -33,6 +35,18 @@ function StartMenuView:drawContent()
   love.graphics.translate(0, 3* game.fonts.lineHeight)
   love.graphics.setFont(game.fonts.small)
   love.graphics.print("PS: Want to make a level? Send a mail to info@ananasblau.com", 0, 0)
+
+  love.graphics.pop()
+
+
+  love.graphics.translate(game.graphics.mode.width / 3 * 2, game.graphics.mode.height / 4)
+  local p = 64
+  love.graphics.setColor( 0, 0, 0, 255)
+  love.graphics.rectangle('fill', 0, 0, p, p)
+  love.graphics.setColor( 200, 200, 200, 255)
+  love.graphics.rectangle('fill', 0, p, p, p)
+  love.graphics.setColor( 0, 200, 0, 255)
+  love.graphics.rectangle('fill', 0, 2*p, p, p)
 
 end
 
@@ -77,8 +91,13 @@ function StartMenuView:update(dt)
   if gui.Button({text = "Credits"}) then
     game:showCredits()
   end
+
   if gui.Button({text = "Donate"}) then
     openURL(game.paypal_url)
+  end
+
+  if gui.Button({text = "More games"}) then
+    openURL(game.more_games_url)
   end
 
 

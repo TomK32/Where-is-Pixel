@@ -10,5 +10,5 @@ function Pixel:initialize(options)
 end
 
 function Pixel:mousepressed(x, y, button)
-  game.foundPixel()
+  game.foundPixel(self)
 end

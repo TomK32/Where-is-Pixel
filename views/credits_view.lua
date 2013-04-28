@@ -18,7 +18,7 @@ function CreditsView:update(dt)
   self.gui.Label({size = {'tight', 1.5 * 6 * game.fonts.lineHeight},
     text = "Where is Pixel? is a game by Ananasblau Games.\
 \
-Programming: Thomas R. Koll, http://ananasblau.com"})
+Everything: Thomas R. Koll"})
 
   if self.gui.Button({text = 'Return to menu'}) then
     game:startMenu()

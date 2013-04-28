@@ -57,8 +57,10 @@ end
 function love.update(dt)
   dt = 0.015
   if not game.current_state then return end
-  game:update(dt)
-  tween.update(dt)
+  if not game.stopped then
+    game:update(dt)
+    tween.update(dt)
+  end
   game.current_state:update(dt)
 end
 

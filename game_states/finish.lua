@@ -3,8 +3,8 @@ require 'views/finish_view'
 
 Finish = class("Finish", State)
 
-function Finish:initialize(message, allow_progress, level_view)
-  self.view = FinishView(message, allow_progress)
+function Finish:initialize(message, allow_progress, level_view, pixel)
+  self.view = FinishView(message, allow_progress, pixel)
   self.view.state = self
   self.level_view = level_view
   self.wait = 0.5
