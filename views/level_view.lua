@@ -1,4 +1,3 @@
-require('views/score_view')
 require('views/log_view')
 
 LevelView = class("LevelView", View)

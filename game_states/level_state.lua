@@ -15,15 +15,12 @@ function LevelState:initialize(level)
   self.log = {'Where is Pixel?', self.level.name, self.level.description}
   self.log_view = LogView(self.log)
   self.view = LevelView(self.level)
-  self.score_view = ScoreView()
   self.view:update()
   love.graphics.setFont(game.fonts.small)
 end
 
 function LevelState:draw()
   self.view:draw()
-
-  --self.score_view:draw()
 
   self.log_view:draw()
 
