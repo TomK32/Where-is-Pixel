@@ -22,6 +22,7 @@ function Level:initialize(level, seed, width, height)
     self[k] = v
   end
 
+  self.log_position = self.log_position or {0, 1}
   self.layers = {}
   self.layer_indexes = {}
   self.entities = nil

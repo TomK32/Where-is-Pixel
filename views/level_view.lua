@@ -1,4 +1,3 @@
-require('views/log_view')
 
 LevelView = class("LevelView", View)
 LevelView:include({

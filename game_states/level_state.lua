@@ -13,7 +13,7 @@ function LevelState:initialize(level)
   local width = game.graphics.mode.width
   self.level = Level(level, math.floor(math.random() * 100), width, height)
   self.log = {'Where is Pixel?', self.level.name, self.level.description}
-  self.log_view = LogView(self.log)
+  self.log_view = LogView(self.log, self.level.log_position)
   self.view = LevelView(self.level)
   self.view:update()
   love.graphics.setFont(game.fonts.small)
@@ -24,7 +24,9 @@ function LevelState:draw()
 
   self.log_view:draw()
 
-  love.graphics.print("FPS: "..love.timer.getFPS(), 10, 20)
+  if game.debug then
+    love.graphics.print("FPS: "..love.timer.getFPS(), 10, 20)
+  end
 end
 
 function LevelState:update(dt)

@@ -1,12 +1,24 @@
 
 LogView = class("LogView", View)
 
-function LogView:initialize(log)
+-- see Lovel for default log_position
+function LogView:initialize(log, position)
   View.initialize(self)
-  self.display.x = 30
-  self.display.y = game.graphics.mode.height - game.fonts.lineHeight * 4
   self.display.height = 60
   self.display.width = 300
+  self.display.x = nil
+  self.display.y = nil
+  if position then
+    if position[1] ~= 0 then
+      self.display.x = game.graphics.mode.width * position[1] - self.display.width - 10
+    end
+    if position[2] ~= 0 then
+      self.display.y = game.graphics.mode.height * position[2] - self.display.height - 10
+      print(position.y)
+    end
+  end
+  self.display.x = self.display.x or 10
+  self.display.y = self.display.y or 10
   self.log = log
 end
 
