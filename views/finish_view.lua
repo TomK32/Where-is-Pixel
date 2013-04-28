@@ -31,7 +31,7 @@ function FinishView:update()
         game:nextLevel()
       end
     else
-      if self.gui.Button({text = "That's all folks! Send me money if you want more levels"}) then
+      if self.gui.Button({text = "That's all folks!"}) then
         openURL(game.paypal_url)
       end
     end

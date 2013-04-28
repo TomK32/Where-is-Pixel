@@ -38,7 +38,7 @@ end
 
 function StartMenuView:update(dt)
   love.graphics.setFont(game.fonts.large)
-  local x = game.graphics.mode.width / 12
+  local x = game.fonts.lineHeight
   local y = game.graphics.mode.height / 4
 
   gui.group.push({grow = "down", pos = {x, y}})

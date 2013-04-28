@@ -9,7 +9,7 @@ game = {
   sounds = require('sounds'),
   version = require('version'),
   name = 'Where is Pixel?',
-  url = 'http://ananasblau.com/where-is-pixel',
+  url = 'http://ananasblau.com/whereispixel',
   paypal_url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ2S9DN8QHWZJ',
   volume = 1.0,
   found_pixel_messages = {
@@ -30,7 +30,7 @@ function game:update(dt)
 end
 
 function game:createFonts(offset)
-  local font_file = 'fonts/Comfortaa-Regular.ttf'
+  local font_file = 'fonts/Orbitron Medium.ttf'
   self.fonts = {
     lineHeight = (20 + offset) * 1.7,
     small = love.graphics.newFont(font_file, 14 + offset),
