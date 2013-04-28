@@ -2,7 +2,7 @@
 local sounds = {}
 
 sounds.fx = {
-  found_pixel = love.audio.newSource("sounds/hurray.wav", 'static')
+  found_pixel = love.audio.newSource('sounds/hurray.mp3', 'static')
 }
 
 sounds.music = {
