@@ -6,7 +6,7 @@ sounds.fx = {
 }
 
 sounds.music = {
-  love.audio.newSource('sounds/start_menu.it', 'static'),
+  love.audio.newSource('sounds/start_menu.it', 'stream'),
 }
 
 for i, sound in pairs(sounds.music) do

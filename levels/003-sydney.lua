@@ -8,7 +8,7 @@ return {
   name = 'The Opera House in Sydney.',
   description = "Maybe he's at the waterside",
   pixel_size = 4,
-  music = love.audio.newSource('sounds/003-ocean-of-the-golem.it', 'static'),
+  music = function() return love.audio.newSource('sounds/003-ocean-of-the-golem.it', 'stream') end,
   log_position = {1, 0},
   entities = {
     background = Background:subclass():include({

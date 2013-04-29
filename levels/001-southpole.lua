@@ -6,13 +6,15 @@
 -- 20 clouds
 -- 99 ISS
 
+-- NOTE: Always make sure the level doesn't load big chunky things liek sounds or things go bad.
+
 -- Level 1
 
 return {
   name = 'South Pole',
   description = 'Can you find him here in this white desert?',
   pixel_size = 4,
-  music = love.audio.newSource('sounds/001-broken-sisters.it', 'static'),
+  music = function() return love.audio.newSource('sounds/001-broken-sisters.it', 'stream') end,
   entities = {
     background = Background:subclass():include({
       drawPixel = function(self, x, y)
