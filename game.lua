@@ -1,3 +1,4 @@
+local tracking_campagin = '?utm_source=whereispixel&utm_medium=desktop&utm_term=main+menu&utm_campaign=games'
 
 game = {
   title = 'Where is Pixel?',
@@ -9,9 +10,9 @@ game = {
   sounds = require('sounds'),
   version = require('version'),
   name = 'Where is Pixel?',
-  url = 'http://ananasblau.com/whereispixel',
+  url = 'http://ananasblau.com/whereispixel' + tracking_campagin,
   paypal_url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ2S9DN8QHWZJ',
-  more_games_url = 'http://ananasblau.com/games',
+  more_games_url = 'http://ananasblau.com/games' + tracking_campagin,
   volume = 1.0,
   music_volume = 1.0,
   pixel_size = 2, -- 1 is hard, 2 medium and 4 easy
