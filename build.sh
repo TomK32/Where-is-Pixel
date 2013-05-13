@@ -17,7 +17,7 @@ BUILD="`pwd`/build"
 mkdir -p "${BUILD}"
 
 # download love files
-for ARCH in "win-x86" "win-x64" "macosx-ub"
+for ARCH in "win-x86" "macosx-ub"
 do
   if [ ! -f "$BUILD/love-${VERSION}-${ARCH}.zip" ];
   then
@@ -38,27 +38,24 @@ GAME="$BUILD/$FILENAME.love"
 echo "Building $FILENAME"
 
 # For windows, just append our love file and zip it
-for arch in 'win-x86' 'win-x64'
-do
-  A="$BUILD/love-$VERSION-$arch"
-  if [ -f "$BUILD/$A" ]; then rm "$BUILD/$A"; fi
-  unzip -q -d "$BUILD" "$A.zip"
-  cat "$GAME" >> "$A/love.exe"
-  mv "$A/love.exe" "$A/$NAME.exe"
-  rm "$A/changes.txt"
-  mv "$A/license.txt" "$A/love2d-license.txt"
-  cp "README.md" "$A/README.txt"
+A="$BUILD/love-$VERSION-win-x86"
+if [ -f "$BUILD/$A" ]; then rm "$BUILD/$A"; fi
+unzip -q -d "$BUILD" "$A.zip"
+cat "$GAME" >> "$A/love.exe"
+mv "$A/love.exe" "$A/$NAME.exe"
+rm "$A/changes.txt"
+mv "$A/license.txt" "$A/love2d-license.txt"
+cp "README.md" "$A/README.txt"
 
-  mv "$A" "$BUILD/${FILENAME}_$arch"
-  R_PWD=`pwd`
-  cd "$BUILD/"
+mv "$A" "$BUILD/${FILENAME}_windows"
+R_PWD=`pwd`
+cd "$BUILD/"
 
-  echo "$BUILD/${FILENAME}_$arch.zip"
-  if [ -f "$BUILD/${FILENAME}_$arch.zip" ]; then rm "$BUILD/${FILENAME}_$arch.zip"; fi
-  zip -q -r "$BUILD/${FILENAME}_$arch.zip" "${FILENAME}_$arch"
-  rm -R "$BUILD/${FILENAME}_$arch"
-  cd "$R_PWD"
-done
+echo "$BUILD/${FILENAME}_windows.zip"
+if [ -f "$BUILD/${FILENAME}_windows.zip" ]; then rm "$BUILD/${FILENAME}_windows.zip"; fi
+zip -q -r "$BUILD/${FILENAME}_windows.zip" "${FILENAME}_windows"
+rm -R "$BUILD/${FILENAME}_windows"
+cd "$R_PWD"
 
 # OS X needs more work, unzip, copy love file into it, apply the patch
 # and zip it up again
