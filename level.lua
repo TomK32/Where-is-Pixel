@@ -7,7 +7,8 @@ LuaBit = require("lib/LuaBit")
 Level.levels = {
   require('levels/001-southpole'),
   require('levels/002-arctic-sea'),
-  require('levels/003-sydney')
+  require('levels/003-sydney'),
+  require('levels/004-uluru')
 }
 
 function Level:initialize(level, seed, width, height)
@@ -41,6 +42,9 @@ function Level:initialize(level, seed, width, height)
     else
       if entity.initialize then
         entity = entity({level = self})
+      end
+      if name == 'pixel' then
+        self.pixel = entity
       end
       self:addEntity(entity)
     end

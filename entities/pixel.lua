@@ -2,9 +2,9 @@
 require 'entities.entity'
 
 Pixel = class('Pixel', Actor)
-Pixel.collision_rect = {-4, -4, 4, 8}
 
 function Pixel:initialize(options)
+  self.collision_rect = {-0.5, -0.5, 1, 3}
   self.scale = game.pixel_size or 2
   self.colors = {
     {100, 80, 0},
@@ -15,6 +15,8 @@ function Pixel:initialize(options)
   }
   self.sections = { 0.2, 0.6, 1, 1, 0.2 } -- height of each section, should be 3 in sum
   Actor.initialize(self, options)
+  self.collision_rect[3] = self.collision_rect[3] * self.scale
+  self.collision_rect[4] = self.collision_rect[4] * self.scale
 end
 
 function Pixel:mousepressed(x, y, button)

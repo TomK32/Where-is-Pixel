@@ -12,7 +12,7 @@
 
 return {
   name = 'South Pole',
-  description = 'Can you find him here in this white desert?',
+  description = 'Can you find Pixel in this white desert?',
   pixel_size = 4,
   music = function() return love.audio.newSource('sounds/001-broken-sisters.it', 'stream') end,
   entities = {

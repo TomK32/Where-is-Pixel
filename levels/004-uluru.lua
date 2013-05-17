@@ -5,16 +5,17 @@
 -- http://commons.wikimedia.org/wiki/File:Sydney_Opera_House_Sails_edit02.jpg
 --
 return {
-  name = 'The Opera House in Sydney.',
-  description = "Maybe Pixel is at the waterside",
+  name = 'Uluru',
+  description = "Ayers Rock, does Pixel it's against the law to climb it?",
   pixel_size = 4,
-  music = function() return love.audio.newSource('sounds/003-ocean-of-the-golem.it', 'stream') end,
+  timer = 60,
+  music = function() return love.audio.newSource('sounds/004-the-guns-tubes.it', 'stream') end,
   log_position = {1, 0},
   entities = {
     background = Background:subclass():include({
       onInitialize = function(self)
         self.position = {x = 0, y = 0, z = 0}
-        self.image = love.graphics.newImage('images/003-sydney.png')
+        self.image = love.graphics.newImage('images/004-uluru.png')
       end
     }),
     pixel = Pixel:subclass():include({
@@ -28,8 +29,7 @@ return {
         }
         local f = self.level.width / 960
         self.position = { z = 10,
-          x = f * (120 + math.random() / 2 * 720), y = self.level.height * 460/540 }
-        self:moveTo(f * (200 + math.random() / 2 * 720), self.position.y, 20)
+          x = f * (360 + math.random() / 2 * 720), y = self.level.height * 252/540 }
       end
     })
   },
