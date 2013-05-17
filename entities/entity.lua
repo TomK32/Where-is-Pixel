@@ -107,6 +107,6 @@ function Entity:drawCollisionRect()
   if not x1 or not y2 then return end
   love.graphics.setColor(0,0,0,255)
   love.graphics.rectangle('line', x1, y1,
-    (x2 - x1) * (self.pixel_size or 1) / game.pixel_size, (y2 - y1) * (self.pixel_size or 1)/ game.pixel_size)
+    (x2 - x1) * (self.pixel_size or 1), (y2 - y1) * (self.pixel_size or 1))
 end
 

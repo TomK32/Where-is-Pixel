@@ -37,15 +37,6 @@ return {
       onInitialize = function(self)
         self.position = { x = self.level.width * (0.25 + math.random()/2), y = self.level.height, z = 10 }
         self:moveTo(self.position.x * ( 0.5 + math.random() / 4), 0, 20)
-      end,
-      drawContent = function(self)
-        local p = self.pixel_size
-        love.graphics.setColor( 0, 0, 0, 255)
-        love.graphics.rectangle('fill', 0, 0, p, p)
-        love.graphics.setColor( 200, 200, 200, 255)
-        love.graphics.rectangle('fill', 0, p, p, p)
-        love.graphics.setColor( 0, 200, 0, 255)
-        love.graphics.rectangle('fill', 0, 2*p, p, p)
       end
     })
   },

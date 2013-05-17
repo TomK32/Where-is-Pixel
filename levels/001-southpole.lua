@@ -67,20 +67,8 @@ return {
     }),
     pixel = Pixel:subclass():include({
       onInitialize = function(self)
-        local p = 4
-        self.collision_rect = { - p, - p, 3 * p, 4 * p}
         self.position = { x = self.level.width * math.random(), y = 0, z = 10 }
         self:moveTo(self.level.width / 2, self.level.height / 2, 20)
-      end,
-      drawContent = function(self)
-
-        local p = self.pixel_size
-        love.graphics.setColor( 0, 0, 0, 255)
-        love.graphics.rectangle('fill', 0, 0, p, p)
-        love.graphics.setColor( 200, 200, 200, 255)
-        love.graphics.rectangle('fill', 0, p, p, p)
-        love.graphics.setColor( 0, 200, 0, 255)
-        love.graphics.rectangle('fill', 0, 2*p, p, p)
       end
     })
   },

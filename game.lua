@@ -10,15 +10,17 @@ game = {
   sounds = require('sounds'),
   version = require('version'),
   name = 'Where is Pixel?',
-  url = 'http://ananasblau.com/whereispixel' + tracking_campagin,
+  url = 'http://ananasblau.com/whereispixel' .. tracking_campagin,
   paypal_url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ2S9DN8QHWZJ',
-  more_games_url = 'http://ananasblau.com/games' + tracking_campagin,
+  more_games_url = 'http://ananasblau.com/games' .. tracking_campagin,
   volume = 1.0,
   music_volume = 1.0,
   pixel_size = 2, -- 1 is hard, 2 medium and 4 easy
   found_pixel_messages = {
     'You found Pixel!',
-    'Oh there is Pixel :)'
+    'Oh, there is Pixel :)',
+    'That was a good hiding spot',
+    'Not in a hundert years'
   },
   current_level = 1
 }

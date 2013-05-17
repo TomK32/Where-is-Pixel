@@ -25,8 +25,10 @@ function StartMenuView:drawContent()
 
   love.graphics.push()
   love.graphics.setFont(game.fonts.large)
-  love.graphics.translate(x, math.min(500, game.graphics.mode.height * 0.5))
+  love.graphics.translate(x, math.min(500, game.graphics.mode.height * 0.4))
   love.graphics.print("Yes, Pixel looks a bit funny.", 0, 0)
+  love.graphics.translate(0, game.fonts.lineHeight)
+  love.graphics.print("Pixel has no gender.", 0, 0)
   love.graphics.translate(0, 3 * game.fonts.lineHeight)
   love.graphics.print("A search game for today's pixel-head.", 0, 0)
   love.graphics.translate(0, game.fonts.lineHeight)
@@ -42,14 +44,10 @@ function StartMenuView:drawContent()
 
 
   love.graphics.translate(game.graphics.mode.width / 3 * 2, game.graphics.mode.height / 4)
-  local p = 64
-  love.graphics.setColor( 0, 0, 0, 255)
-  love.graphics.rectangle('fill', 0, 0, p, p)
-  love.graphics.setColor( 200, 200, 200, 255)
-  love.graphics.rectangle('fill', 0, p, p, p)
-  love.graphics.setColor( 0, 200, 0, 255)
-  love.graphics.rectangle('fill', 0, 2*p, p, p)
-
+  if not self.pixel then
+    self.pixel = Pixel({scale = 64})
+  end
+  self.pixel:draw()
 end
 
 function StartMenuView:update(dt)

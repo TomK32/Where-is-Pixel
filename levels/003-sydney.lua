@@ -19,19 +19,17 @@ return {
     }),
     pixel = Pixel:subclass():include({
       onInitialize = function(self)
+        self.colors = {
+          {100, 80, 0},
+          {200, 180, 100},
+          {0, 200, 50},
+          {0, 0, 100},
+          {60, 20, 0}
+        }
         local f = self.level.width / 960
         self.position = { z = 10,
           x = f * (120 + math.random() / 2 * 720), y = self.level.height * 460/540 }
         self:moveTo(f * (200 + math.random() / 2 * 720), self.position.y, 20)
-      end,
-      drawContent = function(self)
-        local p = self.pixel_size
-        love.graphics.setColor( 0, 0, 0, 255)
-        love.graphics.rectangle('fill', 0, 0, p, p)
-        love.graphics.setColor( 200, 200, 200, 255)
-        love.graphics.rectangle('fill', 0, p, p, p)
-        love.graphics.setColor( 0, 200, 0, 255)
-        love.graphics.rectangle('fill', 0, 2*p, p, p)
       end
     })
   },
